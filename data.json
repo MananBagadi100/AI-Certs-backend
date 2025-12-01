@@ -1,0 +1,34 @@
+[
+    {
+        "id": "c746f6a2-c557-4fae-8415-58c42c34e7f0",
+        "timestamp": "2025-12-01 14:17",
+        "addedWords": [
+            "Hello",
+            "this",
+            "is",
+            "my",
+            "first",
+            "testing",
+            "version"
+        ],
+        "removedWords": [],
+        "oldLength": 0,
+        "newLength": 7,
+        "fullText": "Hello this is my first testing version"
+    },
+    {
+        "id": "a44cb7a7-37eb-4656-9ab9-3fce12e7f7ad",
+        "timestamp": "2025-12-01 14:18",
+        "addedWords": [
+            "second",
+            "updated"
+        ],
+        "removedWords": [
+            "first",
+            "testing"
+        ],
+        "oldLength": 7,
+        "newLength": 7,
+        "fullText": "Hello this is my second updated version"
+    }
+]

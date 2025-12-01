@@ -41,3 +41,9 @@ exports.saveVersion = (req, res) => {
 exports.getVersions = (req, res) => {
     return res.status(200).json(versions);
 };
+
+// To clear all audits
+exports.resetVersions = (req, res) => {
+    versions.length = 0; // Clears array safely
+    return res.status(200).json({ message: "All versions cleared!" });
+};

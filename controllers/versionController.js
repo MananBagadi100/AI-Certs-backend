@@ -5,7 +5,7 @@ const { getDiff } = require("../utils/diffUtil");
 // In-memory storage 
 let versions = [];
 
-// POST /save-version function
+// POST /save-version function to save the audits
 exports.saveVersion = (req, res) => {
     const { text } = req.body;
 
@@ -14,7 +14,7 @@ exports.saveVersion = (req, res) => {
         return res.status(400).json({ message: "Invalid text input" });
     }
 
-    // Get previous version's text (fallback to empty string)
+    // Get previous version's text (fallback to empty string to prevent crashing)
     const oldText = versions.length > 0 ? versions[versions.length - 1].fullText : "";
 
     // Generate diff information
@@ -37,7 +37,13 @@ exports.saveVersion = (req, res) => {
     return res.status(201).json({ message: "Version saved", entry });
 };
 
-// GET /versions
+// GET /versions for getting all the audits and displaying
 exports.getVersions = (req, res) => {
     return res.status(200).json(versions);
+};
+
+// To clear all audits
+exports.resetVersions = (req, res) => {
+    versions.length = 0; // Clears array safely
+    return res.status(200).json({ message: "All versions cleared!" });
 };

@@ -1,18 +1,9 @@
-const fs = require("fs");
 const dayjs = require("dayjs");
 const { v4: uuidv4 } = require("uuid");
 const { getDiff } = require("../utils/diffUtil");
 
-// Reading and writing to data.json 
+// In-memory storage 
 let versions = [];
-
-try {
-    // Load existing versions if file has data
-    const fileData = fs.readFileSync("data.json", "utf8");
-    versions = fileData ? JSON.parse(fileData) : [];
-} catch (err) {
-    console.log("Could not read data.json, starting with empty array");
-}
 
 // POST /save-version function
 exports.saveVersion = (req, res) => {
@@ -40,9 +31,8 @@ exports.saveVersion = (req, res) => {
         fullText: text     // stored to compute next version
     };
 
-    // Push and save to text file
+    // Push to in-memory array
     versions.push(entry);
-    fs.writeFileSync("data.json", JSON.stringify(versions, null, 4));
 
     return res.status(201).json({ message: "Version saved", entry });
 };
